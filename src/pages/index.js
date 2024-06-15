@@ -21,7 +21,7 @@ const BlogIndex = ({ data, location }) => {
         <br></br>
       </header>
       <Showcase/>
-
+      <h2>Portfolio</h2>
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
