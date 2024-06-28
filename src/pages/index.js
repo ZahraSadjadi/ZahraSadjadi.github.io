@@ -5,6 +5,8 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Showcase from "../components/showcase"
+import { StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -22,9 +24,12 @@ const BlogIndex = ({ data, location }) => {
       </header>
       <Showcase/>
       <h2>Portfolio</h2>
-      <ol style={{ listStyle: `none` }}>
+      <ol className="post-list" style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
+
+          let featuredImg = getImage(post.frontmatter.featuredimage.src?.childImageSharp?.gatsbyImageData)
+
 
           return (
             <li key={post.fields.slug}>
@@ -33,22 +38,25 @@ const BlogIndex = ({ data, location }) => {
                 itemScope
                 itemType="http://schema.org/Article"
               >
-                <header>
-                  <h2>
-                    <Link to={post.fields.slug} itemProp="url">
+              <Link to={post.fields.slug} itemProp="url" style={{ display: 'block', position: 'relative' }}>
+                  <GatsbyImage image={featuredImg} alt={title}/>
+                <div className="post-overlay">
+                  <header>
+                    <h2>
                       <span itemProp="headline">{title}</span>
-                    </Link>
-                  </h2>
-                  <small>{post.frontmatter.date}</small>
-                </header>
-                <section>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
-                    }}
-                    itemProp="description"
-                  />
-                </section>
+                    </h2>
+                    <small>{post.frontmatter.date}</small>
+                  </header>
+                  <section>
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: post.frontmatter.description || post.excerpt,
+                      }}
+                      itemProp="description"
+                    />
+                  </section>
+                </div>
+              </Link>
               </article>
             </li>
           )
@@ -84,6 +92,13 @@ export const pageQuery = graphql`
           date(formatString: "MMMM DD, YYYY")
           title
           description
+          featuredimage {
+          src {
+          childImageSharp {
+            gatsbyImageData(width: 800)
+      }
+          }
+          }
         }
       }
     }

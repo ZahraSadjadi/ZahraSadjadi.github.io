@@ -1,8 +1,11 @@
 ---
 title: Forecasting US GDP Growth Rate
 description: Predicting the US GDP growth rate using the ARIMA model.
+featuredimage:
+    src: './gpd_forecast.png'
 ---
 
+![GDP Forecast](./gpd_forecast.png)
 
 **Description:** This project focuses on predicting the US GDP growth rate using the ARIMA model, applying time series analysis to understand and forecast economic trends.
 

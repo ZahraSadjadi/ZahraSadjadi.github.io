@@ -1,7 +1,10 @@
 ---
 title: Loan Approval Prediction
 description: "Using machine learning models to predict loan approval."
+featuredimage:
+    src: './loan_approval.png'
 ---
+![Loan Approval](./loan_approval.png)
 
 **Description:** 
 This project applies machine learning models to predict loan approval, utilizing a dataset that contains details like gender, marital status, education, and employment status to determine loan eligibility.
