@@ -18,7 +18,7 @@ const BlogIndex = ({ data, location }) => {
 
       <header className="global-header">
         <h3 className="subHeader">
-          Business Analyst
+          Financial Data Analyst
         </h3>
         <br></br>
       </header>

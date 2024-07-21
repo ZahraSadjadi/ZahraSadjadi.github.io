@@ -13,9 +13,9 @@ module.exports = {
     title: `Zahra Sadjadi`,
     author: {
       name: `Zahra Sadjadi`,
-      summary: `a business analyst.`,
+      summary: `a financial data analyst.`,
     },
-    description: `A portfolio of a business analyst`,
+    description: `Portfolio`,
     siteUrl: `https://ZahraSadjadi.github.io/`,
     social: {
 
